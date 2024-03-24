@@ -1,4 +1,4 @@
-import { ChakraProvider } from "@chakra-ui/react"
+import { Alert, AlertIcon, ChakraProvider } from "@chakra-ui/react"
 import {
   Stack,
   FormControl,
@@ -17,15 +17,39 @@ const LoginForm = () => {
     
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [isSuccess, setIsSuccess] = useState(false);
+    const[isError, setIsError] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         // Lakukan sesuatu dengan data login
         console.log("Username:", username);
         console.log("Password:", password);
+    if(username === "admin" && password === "123"){
+        setIsSuccess(true);
+        setIsError(false);
+        }
+        else{
+        setIsError(true);
+        setIsSuccess(false);
+        }
     };
     return (
         <ChakraProvider>
+            <Stack spacing={3}>
+                {isSuccess &&
+                    <Alert status='success' variant='subtle'>
+                        <AlertIcon />
+                        Login Berhasil
+                    </Alert>
+                }
+                {isError &&
+                    <Alert status='error' variant='subtle'>
+                        <AlertIcon />
+                        Login Gagal
+                    </Alert>
+                }
+            </Stack>
             <form onSubmit={handleSubmit}>
             <Stack spacing={4}>
                 <FormControl id="Username">

@@ -11,9 +11,11 @@ const Authentication = () => {
   return (
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
       <Flex p={8} flex={1} align={'center'} justify={'center'}>
-        <Stack spacing={6} w={'full'} maxW={'md'}>
-          <Heading fontSize={'2xl'}>Sistem Informasi Akademik</Heading>
-          <LoginForm />
+        <Stack spacing={2} w={'full'} maxW={'md'}>
+          <Heading fontSize={'2xl'}>Login System</Heading>
+          <Stack spacing={6}>
+            <LoginForm />
+          </Stack>
         </Stack>
       </Flex>
       <Flex flex={1}>
